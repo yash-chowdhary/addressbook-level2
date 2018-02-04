@@ -16,9 +16,15 @@ public class SortCommand extends Command{
             + ": Sorts all persons in the address book in alphabetical order of their name.\n"
             + "Example: " + COMMAND_WORD;
 
+    public static final String MESSAGE_SUCCESS = "All persons in address book sorted by Name";
+    public static final String MESSAGE_EMPTY_BOOK = "No persons in address book to sort.";
+
     @Override
     public CommandResult execute() {
         List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        if(allPersons.isEmpty()){
+            return new CommandResult(MESSAGE_EMPTY_BOOK);
+        }
         Collections.sort(allPersons, new Comparator<ReadOnlyPerson>() {
             @Override
             public int compare(ReadOnlyPerson o1, ReadOnlyPerson o2) {
@@ -26,7 +32,7 @@ public class SortCommand extends Command{
             }
         });
 
-        return new CommandResult(getMessageForPersonListShownSummary(allPersons), allPersons);
+        return new CommandResult(MESSAGE_SUCCESS);
 
     }
 }
