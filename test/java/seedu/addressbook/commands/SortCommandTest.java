@@ -1,5 +1,6 @@
 package seedu.addressbook.commands;
 
+import org.junit.Test;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.UniquePersonList;
@@ -13,6 +14,7 @@ import static org.junit.Assert.*;
 
 public class SortCommandTest {
 
+    @Test
     public void sortCommand_addressBookWithFiveElements_sortedAddressBook(){
         SortCommand sortCommand = new SortCommand();
 
@@ -29,9 +31,14 @@ public class SortCommandTest {
         sortCommand.execute();
 
         UniquePersonList personList = addressBook.getAllPersons();
-        UniquePersonList expectedList = new UniquePersonList(personList);
+        UniquePersonList expectedList = null;
+        try{
+            expectedList = new UniquePersonList(sortedList);
+        } catch (Exception e) {
+            System.out.println("exception");
+        }
 
-        assertTrue(sortedList.equals(expectedList));
+        assertTrue(personList.equals(expectedList));
     }
 
 }
