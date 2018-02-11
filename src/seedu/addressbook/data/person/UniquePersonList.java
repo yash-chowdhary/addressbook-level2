@@ -108,6 +108,7 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
         internalList.add(toAdd);
+        Person.nextSequenceNumber++;
     }
 
     /**
