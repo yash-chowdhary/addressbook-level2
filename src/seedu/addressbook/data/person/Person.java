@@ -10,12 +10,16 @@ import java.util.Objects;
  */
 public class Person implements ReadOnlyPerson {
 
+    public static int nextSequenceNumber = 1;
+
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private int sequenceNumber;
 
     private final UniqueTagList tags;
+
     /**
      * Assumption: Every field must be present and not null.
      */
@@ -24,6 +28,7 @@ public class Person implements ReadOnlyPerson {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.sequenceNumber = nextSequenceNumber++;
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
     }
 
@@ -64,6 +69,14 @@ public class Person implements ReadOnlyPerson {
      */
     public void setTags(UniqueTagList replacement) {
         tags.setTags(replacement);
+    }
+
+    public static int getNextSequenceNumber() {
+        return nextSequenceNumber;
+    }
+
+    public int getSequenceNumber() {
+        return sequenceNumber;
     }
 
     @Override
