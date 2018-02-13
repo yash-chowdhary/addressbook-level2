@@ -108,6 +108,9 @@ public class TestUtil {
         return numberOfElementsSeen;
     }
 
+    /**
+     * Returns a test person with default attributes
+     */
     public static Person generateTestPerson() {
         try {
             return new Person(new Name(Name.EXAMPLE), new Phone(Phone.EXAMPLE, false),
@@ -118,6 +121,10 @@ public class TestUtil {
         }
     }
 
+    /**
+     * Returns a test person with a custom name
+     * @param name person created with this name
+     * */
     public static Person generateTestPerson(String name) {
         try {
             return new Person(new Name(name), new Phone(Phone.EXAMPLE, false),

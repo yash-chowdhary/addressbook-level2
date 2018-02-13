@@ -126,7 +126,7 @@ public class UniquePersonList implements Iterable<Person> {
 
     /**
      * Sorts all persons in address book by name
-     * @return
+     * @return success/failure of operation
      */
     public boolean sort() {
         if(internalList.isEmpty()){
