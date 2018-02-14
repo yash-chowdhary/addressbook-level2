@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+import seedu.addressbook.common.PersonComparator;
 import seedu.addressbook.common.Utils;
 import seedu.addressbook.data.exception.DuplicateDataException;
 
@@ -138,12 +138,7 @@ public class UniquePersonList implements Iterable<Person> {
         if(internalList.isEmpty()){
             return false;
         }
-        Collections.sort(internalList, new Comparator<Person>() {
-            @Override
-            public int compare(Person o1, Person o2) {
-                return o1.getName().toString().compareTo(o2.getName().toString());
-            }
-        });
+        Collections.sort(internalList, new PersonComparator());
         return true;
     }
 
